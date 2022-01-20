@@ -58,6 +58,11 @@ class User extends Authenticatable
         return parent::delete();
     }
 
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
     public function projects()
     {
         return $this->hasMany(Project::class);

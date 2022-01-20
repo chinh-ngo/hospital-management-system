@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Project;
 use App\Models\Zone;
 use Illuminate\Http\Request;
@@ -71,9 +72,8 @@ class CustomAuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            $zones = Zone::all();
-            $projects = DB::table('projects')->orderBy('created_at')->paginate(5);
-            return view('dashboard', ['zones' => $zones, 'projects' => $projects]);
+            $data['appointments'] = Appointment::all()->count();
+            return view('dashboard', $data);
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

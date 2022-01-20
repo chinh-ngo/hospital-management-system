@@ -102,34 +102,46 @@
                                         <span>Dashboard</span>
                                     </a>
                                 </li>
-                                <li id="menu_zones">
-                                    <a href="{{route('zones')}}">
+                                <li id="menu_appointments">
+                                    <a href="{{url('/appointment')}}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                         <span>Appointments</span>
                                     </a>
                                 </li>
 
 
-                                <li id="menu_states">
-                                    <a href="{{route('states')}}">
+                                <li id="menu_patients">
+                                    <a href="{{url('/patient')}}">
                                         <i class="fa fa-bed" aria-hidden="true"></i>
                                         <span>Patients</span>
                                     </a>
                                 </li>
 
-                                <li id="menu_projects">
-                                    <a href="{{route('projects')}}">
+                                <li id="menu_drugs" class="nav-parent">
+                                    <a href="#">
                                         <i class="fa fa-medkit" aria-hidden="true"></i>
                                         <span>Drugs</span>
                                     </a>
+                                    <ul class="nav nav-children">
+                                        <li>
+                                            <a href="{{url('/drug')}}">
+                                                Drugs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url('/drug/category')}}">
+                                                Drug Category
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
 
-                                <li id="menu_finance">
-                                    <a href="{{route('finances')}}">
-                                        <i class="fa fa-list" aria-hidden="true"></i>
-                                        <span>Drug Category</span>
-                                    </a>
-                                </li>
+                                {{--<li id="menu_finance">--}}
+                                    {{--<a href="{{route('finances')}}">--}}
+                                        {{--<i class="fa fa-list" aria-hidden="true"></i>--}}
+                                        {{--<span>Drug Category</span>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
 
                                 <li id="menu_projectteam">
                                     <a href="{{route('projectTeam')}}">
@@ -191,6 +203,13 @@
                                     <a href="{{route('reports')}}">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <span>Status</span>
+                                    </a>
+                                </li>
+
+                                <li id="menu_reports">
+                                    <a href="{{route('reports')}}">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                        <span>Insurances</span>
                                     </a>
                                 </li>
 

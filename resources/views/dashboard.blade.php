@@ -150,11 +150,11 @@
                                 <div class="summary">
                                     <h4 class="title">Appointments</h4>
                                     <div class="info">
-                                        <strong class="amount">3765</strong>
+                                        <strong class="amount">{{$appointments}}</strong>
                                     </div>
                                 </div>
                                 <div class="summary-footer">
-                                    <a class="text-muted text-uppercase">(View All)</a>
+                                    <a class="text-muted text-uppercase" href="{{url('/appointment')}}">(View All)</a>
                                 </div>
                             </div>
                         </div>

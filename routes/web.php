@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DrugController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProjectTeamController;
 use App\Http\Controllers\ReportController;
@@ -72,3 +75,15 @@ Route::post('user/add', [UserController::class, 'add'])->name('user.add');
 Route::post('user/update', [UserController::class, 'update'])->name('user.update');
 Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 
+Route::prefix('appointment')->group(function () {
+    Route::get('/', [AppointmentController::class, 'index']);
+});
+
+Route::prefix('patient')->group(function () {
+    Route::get('/', [PatientController::class, 'index']);
+});
+
+Route::prefix('drug')->group(function () {
+    Route::get('/', [DrugController::class, 'index']);
+    Route::get('/category', [DrugController::class, 'category']);
+});
