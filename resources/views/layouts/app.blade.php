@@ -173,8 +173,8 @@
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_hmos">
+                                    <a href="{{url('/hmo')}}">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                         <span>HMO</span>
                                     </a>

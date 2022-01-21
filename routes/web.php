@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BedController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\HmoController;
 use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProjectsController;
@@ -111,4 +112,8 @@ Route::prefix('ward')->group(function () {
 
 Route::prefix('bed')->group(function () {
     Route::get('/', [BedController::class, 'index']);
+});
+
+Route::prefix('hmo')->group(function () {
+    Route::get('/', [HmoController::class, 'index']);
 });
