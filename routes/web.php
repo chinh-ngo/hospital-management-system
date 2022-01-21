@@ -3,11 +3,13 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProjectTeamController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StatesController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZonesController;
 use Illuminate\Support\Facades\Route;
@@ -86,4 +88,12 @@ Route::prefix('patient')->group(function () {
 Route::prefix('drug')->group(function () {
     Route::get('/', [DrugController::class, 'index']);
     Route::get('/category', [DrugController::class, 'category']);
+});
+
+Route::prefix('test')->group(function () {
+    Route::get('/', [TestController::class, 'index']);
+});
+
+Route::prefix('parameter')->group(function () {
+    Route::get('/', [ParameterController::class, 'index']);
 });

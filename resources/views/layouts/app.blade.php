@@ -136,22 +136,15 @@
                                     </ul>
                                 </li>
 
-                                {{--<li id="menu_finance">--}}
-                                    {{--<a href="{{route('finances')}}">--}}
-                                        {{--<i class="fa fa-list" aria-hidden="true"></i>--}}
-                                        {{--<span>Drug Category</span>--}}
-                                    {{--</a>--}}
-                                {{--</li>--}}
-
-                                <li id="menu_projectteam">
-                                    <a href="{{route('projectTeam')}}">
+                                <li id="menu_tests">
+                                    <a href="{{url('/test')}}">
                                         <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                         <span>Test</span>
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_params">
+                                    <a href="{{url('/parameter')}}">
                                         <i class="fa fa-flag" aria-hidden="true"></i>
                                         <span>Result Parameters</span>
                                     </a>
