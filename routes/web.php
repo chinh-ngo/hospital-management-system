@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BedController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\ParameterController;
@@ -106,4 +107,8 @@ Route::prefix('scan')->group(function () {
 
 Route::prefix('ward')->group(function () {
     Route::get('/', [WardController::class, 'index']);
+});
+
+Route::prefix('bed')->group(function () {
+    Route::get('/', [BedController::class, 'index']);
 });

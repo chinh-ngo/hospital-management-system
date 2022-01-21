@@ -12,4 +12,15 @@ class Ward extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function delete()
+    {
+        $this->beds()->delete();
+        return parent::delete();
+    }
+
+    public function beds()
+    {
+        return $this->hasMany(Bed::class);
+    }
 }

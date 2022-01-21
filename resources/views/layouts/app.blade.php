@@ -166,8 +166,8 @@
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_beds">
+                                    <a href="{{url('/bed')}}">
                                         <i class="fa fa-bed" aria-hidden="true"></i>
                                         <span>Beds</span>
                                     </a>
