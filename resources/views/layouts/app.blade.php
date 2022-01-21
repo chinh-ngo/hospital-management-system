@@ -117,6 +117,8 @@
                                     </a>
                                 </li>
 
+                                @can('manage-project')
+
                                 <li id="menu_drugs" class="nav-parent">
                                     <a href="#">
                                         <i class="fa fa-medkit" aria-hidden="true"></i>
@@ -150,15 +152,15 @@
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_scans">
+                                    <a href="{{url('/scan')}}">
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                         <span>Scan</span>
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_wards">
+                                    <a href="{{url('/ward')}}">
                                         <i class="fa fa-building" aria-hidden="true"></i>
                                         <span>Wards</span>
                                     </a>
@@ -206,7 +208,6 @@
                                     </a>
                                 </li>
 
-                                @can('manage-user')
 
                                 <li id="menu_users">
                                     <a href="{{route('users')}}">
@@ -214,9 +215,7 @@
                                         <span>Users</span>
                                     </a>
                                 </li>
-
                                 @endcan
-
 
                             </ul>
                         </nav>

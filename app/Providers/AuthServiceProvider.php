@@ -41,8 +41,7 @@ class AuthServiceProvider extends ServiceProvider
     }
 
     public static $permissions = [
-        'create-project' => ['superAdmin','engr','coordinator','head'],
-        'create-report' => ['superAdmin','engr','coordinator','head'],
-        'manage-user' => ['superAdmin']
+        'manage-project' => ['superAdmin'],
+        'manage-patient' => ['superAdmin', 'doctor'],
     ];
 }

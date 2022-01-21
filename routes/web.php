@@ -8,9 +8,11 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ProjectTeamController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ScanController;
 use App\Http\Controllers\StatesController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WardController;
 use App\Http\Controllers\ZonesController;
 use Illuminate\Support\Facades\Route;
 
@@ -96,4 +98,12 @@ Route::prefix('test')->group(function () {
 
 Route::prefix('parameter')->group(function () {
     Route::get('/', [ParameterController::class, 'index']);
+});
+
+Route::prefix('scan')->group(function () {
+    Route::get('/', [ScanController::class, 'index']);
+});
+
+Route::prefix('ward')->group(function () {
+    Route::get('/', [WardController::class, 'index']);
 });
