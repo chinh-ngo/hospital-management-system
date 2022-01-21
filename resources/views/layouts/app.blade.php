@@ -180,29 +180,29 @@
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_others">
+                                    <a href="{{url('/other')}}">
                                         <i class="fa fa-server" aria-hidden="true"></i>
                                         <span>Other Services</span>
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_departments">
+                                    <a href="{{url('/department')}}">
                                         <i class="fa fa-building-o" aria-hidden="true"></i>
                                         <span>Departments</span>
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_status">
+                                    <a href="{{url('/statu')}}">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <span>Status</span>
                                     </a>
                                 </li>
 
-                                <li id="menu_reports">
-                                    <a href="{{route('reports')}}">
+                                <li id="menu_insurances">
+                                    <a href="{{url('/insurance')}}">
                                         <i class="fa fa-heart" aria-hidden="true"></i>
                                         <span>Insurances</span>
                                     </a>

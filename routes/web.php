@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BedController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\HmoController;
+use App\Http\Controllers\InsuranceController;
+use App\Http\Controllers\OtherController;
 use App\Http\Controllers\ParameterController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProjectsController;
@@ -12,6 +15,7 @@ use App\Http\Controllers\ProjectTeamController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\StatesController;
+use App\Http\Controllers\StatuController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WardController;
@@ -116,4 +120,18 @@ Route::prefix('bed')->group(function () {
 
 Route::prefix('hmo')->group(function () {
     Route::get('/', [HmoController::class, 'index']);
+});
+
+Route::prefix('other')->group(function () {
+    Route::get('/', [OtherController::class, 'index']);
+});
+
+Route::prefix('department')->group(function () {
+    Route::get('/', [DepartmentController::class, 'index']);
+});
+Route::prefix('statu')->group(function () {
+    Route::get('/', [StatuController::class, 'index']);
+});
+Route::prefix('insurance')->group(function () {
+    Route::get('/', [InsuranceController::class, 'index']);
 });
