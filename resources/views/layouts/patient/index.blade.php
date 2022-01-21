@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap-timepicker/css/bootstrap-timepicker.css')}}" />
 
-    <link rel="stylesheet" href="{{asset('assets/stylesheets/jquery.fileupload.css')}}">
-
-    <link rel="stylesheet" href="{{asset('assets/stylesheets/dropify.css')}}">
 @endsection
 
 @section('content')
@@ -112,9 +109,7 @@
                             <div class="form-group mt-lg">
                                 <label class="col-sm-3 control-label">Patient Picture</label>
                                 <div class="col-sm-9">
-                                    <div class="example">
-                                        <input type="file" id="input-file-now" data-plugin="dropify" data-default-file=""/>
-                                    </div>
+                                    <input type="file" id="input-file-now" class="form-control"/>
                                 </div>
                             </div>
 
@@ -194,16 +189,6 @@
     <script src="{{asset('assets/vendor/bootstrap-confirmation/bootstrap-confirmation.js')}}"></script>
 
     <script src="{{asset('assets/vendor/jquery-maskedinput/jquery.maskedinput.js')}}"></script>
-
-    <script src="{{asset('assets/javascripts/canvas-to-blob.js')}}"></script>
-    <script src="{{asset('assets/javascripts/load-image.all.min.js')}}"></script>
-    <script src="{{asset('assets/javascripts/jquery.fileupload.js')}}"></script>
-    <script src="{{asset('assets/javascripts/jquery.fileupload-process.js')}}"></script>
-    <script src="{{asset('assets/javascripts/jquery.fileupload-image.js')}}"></script>
-
-
-    <script src="{{asset('assets/javascripts/jquery.fileupload-ui.js')}}"></script>
-    <script src="{{asset('assets/javascripts/dropify.min.js')}}"></script>
 
     <script>
 

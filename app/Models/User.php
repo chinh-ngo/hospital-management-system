@@ -50,6 +50,7 @@ class User extends Authenticatable
         $this->projects()->delete();
         $this->reports()->delete();
         $this->members()->delete();
+        $this->appointments()->delete();
         // as suggested by Dirk in comment,
         // it's an uglier alternative, but faster
         // Photo::where("user_id", $this->id)->delete()

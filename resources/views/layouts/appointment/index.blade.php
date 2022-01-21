@@ -108,6 +108,7 @@
                     <th>Time</th>
                     <th>Doctor to see</th>
                     <th>Consulting Room</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>

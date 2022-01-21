@@ -123,12 +123,12 @@
                                         <span>Drugs</span>
                                     </a>
                                     <ul class="nav nav-children">
-                                        <li>
+                                        <li id="li-drug">
                                             <a href="{{url('/drug')}}">
                                                 Drugs
                                             </a>
                                         </li>
-                                        <li>
+                                        <li id="li-category">
                                             <a href="{{url('/drug/category')}}">
                                                 Drug Category
                                             </a>
