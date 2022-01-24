@@ -26,11 +26,11 @@
                                 <div class="summary">
                                     <h4 class="title">Patients</h4>
                                     <div class="info">
-                                        <strong class="amount">3765</strong>
+                                        <strong class="amount">{{$patients}}</strong>
                                     </div>
                                 </div>
                                 <div class="summary-footer">
-                                    <a class="text-muted text-uppercase">(View All)</a>
+                                    <a class="text-muted text-uppercase" href="{{url('/patient')}}">(View All)</a>
                                 </div>
                             </div>
                         </div>
@@ -50,11 +50,11 @@
                                 <div class="summary">
                                     <h4 class="title">Wards</h4>
                                     <div class="info">
-                                        <strong class="amount">14,890</strong>
+                                        <strong class="amount">{{$wards}}</strong>
                                     </div>
                                 </div>
                                 <div class="summary-footer">
-                                    <a class="text-muted text-uppercase">(View All)</a>
+                                    <a class="text-muted text-uppercase" href="{{url('/ward')}}">(View All)</a>
                                 </div>
                             </div>
                         </div>
@@ -74,11 +74,11 @@
                                 <div class="summary">
                                     <h4 class="title">Beds</h4>
                                     <div class="info">
-                                        <strong class="amount">38</strong>
+                                        <strong class="amount">{{$beds}}</strong>
                                     </div>
                                 </div>
                                 <div class="summary-footer">
-                                    <a class="text-muted text-uppercase">(View All)</a>
+                                    <a class="text-muted text-uppercase" href="{{url('/bed')}}">(View All)</a>
                                 </div>
                             </div>
                         </div>
@@ -175,142 +175,25 @@
                 </header>
                 <div class="panel-body">
                     <div class="row">
+                        @foreach($latestPatients as $patient)
                         <div class="col-md-12 col-lg-3 col-xl-3">
                             <section class="panel">
                                 <header class="panel-heading bg-default">
                                     <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
+                                        <img src="{{$patient->upload_file}}">
                                     </div>
                                 </header>
                                 <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
+                                    <h4 class="text-weight-semibold mt-sm">{{$patient->name}}</h4>
+                                    <p>{{$patient->state}}</p>
                                     <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
+                                    <p><i class="fa fa-id-card mr-xs">  card:</i> {{$patient->card_num}}</p>
+                                    <p><i class="fa fa-user mr-xs">   age:</i> {{$patient->age}}</p>
+                                    <p><i class="fa fa-phone mr-xs">    phone:</i> {{$patient->phone_num}}</p>
                                 </div>
                             </section>
                         </div>
-                        <div class="col-md-12 col-lg-3 col-xl-3">
-                            <section class="panel">
-                                <header class="panel-heading bg-default">
-                                    <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
-                                    </div>
-                                </header>
-                                <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
-                                    <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-md-12 col-lg-3 col-xl-3">
-                            <section class="panel">
-                                <header class="panel-heading bg-default">
-                                    <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
-                                    </div>
-                                </header>
-                                <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
-                                    <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-md-12 col-lg-3 col-xl-3">
-                            <section class="panel">
-                                <header class="panel-heading bg-default">
-                                    <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
-                                    </div>
-                                </header>
-                                <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
-                                    <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-md-12 col-lg-3 col-xl-3">
-                            <section class="panel">
-                                <header class="panel-heading bg-default">
-                                    <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
-                                    </div>
-                                </header>
-                                <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
-                                    <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-md-12 col-lg-3 col-xl-3">
-                            <section class="panel">
-                                <header class="panel-heading bg-default">
-                                    <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
-                                    </div>
-                                </header>
-                                <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
-                                    <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-md-12 col-lg-3 col-xl-3">
-                            <section class="panel">
-                                <header class="panel-heading bg-default">
-                                    <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
-                                    </div>
-                                </header>
-                                <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
-                                    <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-md-12 col-lg-3 col-xl-3">
-                            <section class="panel">
-                                <header class="panel-heading bg-default">
-                                    <div class="panel-heading-profile-picture">
-                                        <img src="assets/images/!logged-user.jpg">
-                                    </div>
-                                </header>
-                                <div class="panel-body">
-                                    <h4 class="text-weight-semibold mt-sm">John Doe</h4>
-                                    <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes. </p>
-                                    <hr class="solid short">
-                                    <p><i class="fa fa-id-card mr-xs">  card:</i> 4134143</p>
-                                    <p><i class="fa fa-user mr-xs">   age:</i> 12</p>
-                                    <p><i class="fa fa-phone mr-xs">    phone:</i> 212121212</p>
-                                </div>
-                            </section>
-                        </div>
+                        @endforeach
                     </div>
 
                 </div>

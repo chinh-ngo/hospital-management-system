@@ -17,9 +17,9 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('reason');
-            $table->date('date');
+            $table->string('date');
             $table->time('time');
-            $table->integer('room');
+            $table->string('room');
             $table->timestamps();
         });
     }

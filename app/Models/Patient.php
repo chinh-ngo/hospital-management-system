@@ -22,4 +22,9 @@ class Patient extends Model
         'upload_file'
     ];
 
+    public function insurance()
+    {
+        $this->belongsTo(Insurance::class);
+    }
+
 }

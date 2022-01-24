@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Bed;
+use App\Models\Patient;
 use App\Models\Project;
+use App\Models\Ward;
 use App\Models\Zone;
 use Illuminate\Http\Request;
 use Hash;
@@ -72,6 +75,10 @@ class CustomAuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
+            $data['latestPatients'] = Patient::orderBy('created_at')->paginate(8);
+            $data['wards'] = Ward::all()->count();
+            $data['beds'] = Bed::all()->count();
+            $data['patients'] = Patient::all()->count();
             $data['appointments'] = Appointment::all()->count();
             return view('dashboard', $data);
         }

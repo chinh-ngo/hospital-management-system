@@ -26,7 +26,7 @@
             <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
                 <section class="panel">
 
-                    <form method="POST" action="{{route('zone.add')}}">
+                    <form method="POST" action="{{url('/appointment/add')}}">
                         @csrf
                         <header class="panel-heading">
                             <h2 class="panel-title">Add Appointment</h2>
@@ -47,7 +47,7 @@
                                         <span class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </span>
-                                        <input type="text" data-plugin-datepicker="" class="form-control">
+                                        <input name="date" required type="text" data-plugin-datepicker="" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                         <span class="input-group-addon">
                                             <i class="fa fa-clock-o"></i>
                                         </span>
-                                        <input type="text" data-plugin-timepicker="" class="form-control">
+                                        <input type="text" name="time" required data-plugin-timepicker="" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +96,81 @@
                 </section>
             </div>
 
+            <div id="modalForm1" class="modal-block modal-block-primary mfp-hide">
+                <section class="panel">
+
+                    <form method="POST" action="{{url('/appointment/update')}}">
+                        @csrf
+                        <header class="panel-heading">
+                            <h2 class="panel-title">Update Appointment</h2>
+                        </header>
+
+                        <div class="panel-body">
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Reason</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="update_reason" id="update_reason" class="form-control" placeholder="Type Reason" required/>
+                                    <input type="hidden" name="id" id="id" class="form-control" placeholder="Type Reason"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Date</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input name="update_date" id="update_date" required type="text" data-plugin-datepicker="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Time</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </span>
+                                        <input type="text" name="update_time" id="update_time" required data-plugin-timepicker="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Doctor to see</label>
+                                <div class="col-sm-9">
+                                    <select name="update_user_id" id="update_user_id" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
+                                        <optgroup label="user">
+                                            @foreach($users as $user)
+                                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Consulting Room</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="update_room" id="update_room" class="form-control" placeholder="Type Consulting Room" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                                </div>
+                            </div>
+                        </footer>
+                    </form>
+                </section>
+            </div>
+
+
             <a class="btn btn-default" onclick="exportToExcel()" ><span class="fa fa-download"></span> Export as Excel</a>
 
         </header>
@@ -119,7 +194,7 @@
                         <td>{{$appointment->time}}</td>
                         <td>{{$appointment->user->name}}</td>
                         <td>{{$appointment->room}}</td>
-                        <td><a><i onclick="update('{{$appointment}}')" class="fa fa-pencil"></i></a>   <a class="delete-row" href="/appointment/delete/{{$appointment->id}}"><i  class="fa fa-trash-o"></i></a> </td>
+                        <td><a><i href="#modalForm1" onclick="update('{{$appointment}}')" class="modal-with-form fa fa-pencil"></i></a>   <a class="delete-row" href="/appointment/delete/{{$appointment->id}}"><i  class="fa fa-trash-o"></i></a> </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -157,7 +232,13 @@
 
         function update(data){
             data = JSON.parse(data);
-            window.location.assign('/report/update/' + data.id);
+            $('#update_user_id').val(data.user_id);
+            $('#update_reason').val(data.reason);
+            $('#update_date').val(data.date);
+            $('#update_time').val(data.time);
+            $('#update_room').val(data.room);
+            $('#id').val(data.id);
+
         }
 
         function exportToExcel(){

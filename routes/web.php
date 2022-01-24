@@ -87,10 +87,16 @@ Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.de
 
 Route::prefix('appointment')->group(function () {
     Route::get('/', [AppointmentController::class, 'index']);
+    Route::post('/add', [AppointmentController::class, 'add']);
+    Route::post('/update', [AppointmentController::class, 'update']);
+    Route::get('/delete/{id}', [AppointmentController::class, 'delete']);
 });
 
 Route::prefix('patient')->group(function () {
     Route::get('/', [PatientController::class, 'index']);
+    Route::post('/add', [PatientController::class, 'add']);
+    Route::post('/update', [PatientController::class, 'update']);
+    Route::get('/delete/{id}', [PatientController::class, 'delete']);
 });
 
 Route::prefix('drug')->group(function () {

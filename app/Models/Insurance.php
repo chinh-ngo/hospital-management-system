@@ -12,4 +12,15 @@ class Insurance extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function delete()
+    {
+        $this->patients()->delete();
+        return parent::delete();
+    }
+
+    public function patients()
+    {
+        $this->hasMany(Patient::class);
+    }
 }

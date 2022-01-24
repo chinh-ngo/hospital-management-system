@@ -27,7 +27,7 @@
             <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
                 <section class="panel">
 
-                    <form method="POST" action="{{route('zone.add')}}">
+                    <form method="POST" action="{{url('/patient/add')}}"  enctype="multipart/form-data">
                         @csrf
                         <header class="panel-heading">
                             <h2 class="panel-title">Add Patient</h2>
@@ -76,7 +76,7 @@
                                     <span class="input-group-addon">
                                     <i class="fa fa-phone"></i>
                                     </span>
-                                        <input id="phone" data-plugin-masked-input data-input-mask="(999) 999-9999" placeholder="(123) 123-1234" class="form-control">
+                                        <input id="phone" name="phone_num" data-plugin-masked-input data-input-mask="(999) 999-9999" placeholder="(123) 123-1234" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -95,10 +95,24 @@
                                     <span class="input-group-addon">
                                     <i class="fa fa-phone"></i>
                                     </span>
-                                        <input id="kingphone" data-plugin-masked-input data-input-mask="(999) 999-9999" placeholder="(123) 123-1234" class="form-control">
+                                        <input id="kingphone" name="king_phone" data-plugin-masked-input data-input-mask="(999) 999-9999" placeholder="(123) 123-1234" class="form-control">
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Doctor to see</label>
+                                <div class="col-sm-9">
+                                    <select name="insurance" id="insurance" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
+                                        <optgroup label="insurance">
+                                            @foreach($insurances as $insurance)
+                                                <option value="{{$insurance->id}}">{{$insurance->name}}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="form-group mt-lg">
                                 <label class="col-sm-3 control-label">Blood Group</label>
@@ -109,7 +123,7 @@
                             <div class="form-group mt-lg">
                                 <label class="col-sm-3 control-label">Patient Picture</label>
                                 <div class="col-sm-9">
-                                    <input type="file" id="input-file-now" class="form-control"/>
+                                    <input type="file" required name="patient_avatar" id="input-file-now" class="form-control"/>
                                 </div>
                             </div>
 
@@ -149,7 +163,7 @@
                 @foreach($patients as $patient)
                     <tr style="text-align: center;">
                         <td>{{$patient->card_num}}</td>
-                        <td><img src="{{asset($patient->upload_file)}}" width="50" height="50"/></td>
+                        <td><img src="uploadFiles/patients/{{$patient->upload_file}}" width="50" height="50"/></td>
                         <td>{{$patient->name}}</td>
                         <td>{{$patient->age}}</td>
                         <td>{{$patient->insurance_id}}</td>
