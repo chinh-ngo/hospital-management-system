@@ -26,7 +26,7 @@
             <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
                 <section class="panel">
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{url('/parameter/add')}}">
                         @csrf
                         <header class="panel-heading">
                             <h2 class="panel-title">Add Parameter</h2>
@@ -37,6 +37,37 @@
                                 <label class="col-sm-3 control-label">Name</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="name" class="form-control" required/>
+                                </div>
+                            </div>
+
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                                </div>
+                            </div>
+                        </footer>
+                    </form>
+                </section>
+            </div>
+
+            <div id="modalForm1" class="modal-block modal-block-primary mfp-hide">
+                <section class="panel">
+
+                    <form method="POST" action="{{url('/parameter/update')}}">
+                        @csrf
+                        <header class="panel-heading">
+                            <h2 class="panel-title">Update Parameter</h2>
+                        </header>
+
+                        <div class="panel-body">
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="update_name" name="update_name" class="form-control" required/>
+                                    <input type="hidden" id="id" name="id" class="form-control" required/>
                                 </div>
                             </div>
 
@@ -68,7 +99,7 @@
                 @foreach($parameters as $parameter)
                     <tr>
                         <td>{{$parameter->name}}</td>
-                        <td><a><i onclick="update('{{$parameter}}')" class="fa fa-pencil"></i></a>   <a class="delete-row" href="/parameter/delete/{{$parameter->id}}"><i  class="fa fa-trash-o"></i></a> </td>
+                        <td><a><i onclick="update('{{$parameter}}')" href="#modalForm1" class="modal-with-form fa fa-pencil"></i></a>   <a class="delete-row" href="/parameter/delete/{{$parameter->id}}"><i  class="fa fa-trash-o"></i></a> </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -104,7 +135,9 @@
     <script>
         function update(data){
             data = JSON.parse(data);
-            window.location.assign('/report/update/' + data.id);
+            $('#update_name').val(data.name);
+            $('#id').val(data.id);
+
         }
 
         function exportToExcel(){

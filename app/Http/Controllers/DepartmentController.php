@@ -17,4 +17,25 @@ class DepartmentController extends Controller
         $data['departments'] = Department::all();
         return view('layouts.department.index', $data);
     }
+    public function add(Request $request)
+    {
+        $department = new Department;
+        $department->name = $request->name;
+        $department->save();
+        return redirect()->back();
+    }
+    public function delete(Request $request)
+    {
+        Department::findOrFail($request->id)->delete();
+        return redirect()->back();
+    }
+    public function update(Request $request)
+    {
+        Department::find($request->id)->update([
+            'name' => $request->update_name
+        ]);
+        return redirect()->back();
+    }
+
+
 }

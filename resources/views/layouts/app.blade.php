@@ -96,12 +96,14 @@
                         <nav id="menu" class="nav-main" role="navigation">
 
                             <ul class="nav nav-main">
+                                @can('manage-project')
                                 <li id="menu_dashboard">
                                     <a href="{{route('dashboard')}}">
                                         <i class="fa fa-home" aria-hidden="true"></i>
                                         <span>Dashboard</span>
                                     </a>
                                 </li>
+                                @endcan
                                 <li id="menu_appointments">
                                     <a href="{{url('/appointment')}}">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>

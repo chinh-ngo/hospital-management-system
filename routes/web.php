@@ -86,7 +86,7 @@ Route::post('user/update', [UserController::class, 'update'])->name('user.update
 Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 
 Route::prefix('appointment')->group(function () {
-    Route::get('/', [AppointmentController::class, 'index']);
+    Route::get('/', [AppointmentController::class, 'index'])->name('appointment');
     Route::post('/add', [AppointmentController::class, 'add']);
     Route::post('/update', [AppointmentController::class, 'update']);
     Route::get('/delete/{id}', [AppointmentController::class, 'delete']);
@@ -119,34 +119,61 @@ Route::prefix('test')->group(function () {
 
 Route::prefix('parameter')->group(function () {
     Route::get('/', [ParameterController::class, 'index']);
+    Route::get('/delete/{id}', [ParameterController::class, 'delete']);
+    Route::post('/add', [ParameterController::class, 'add']);
+    Route::post('/update', [ParameterController::class, 'update']);
 });
 
 Route::prefix('scan')->group(function () {
     Route::get('/', [ScanController::class, 'index']);
+    Route::post('/add', [ScanController::class, 'add']);
+    Route::post('/update', [ScanController::class, 'update']);
+    Route::get('/delete/{id}', [ScanController::class, 'delete']);
 });
 
 Route::prefix('ward')->group(function () {
     Route::get('/', [WardController::class, 'index']);
+    Route::post('/add', [WardController::class, 'add']);
+    Route::post('/update', [WardController::class, 'update']);
+    Route::get('/delete/{id}', [WardController::class, 'delete']);
 });
 
 Route::prefix('bed')->group(function () {
     Route::get('/', [BedController::class, 'index']);
+    Route::post('/add', [BedController::class, 'add']);
+    Route::post('/update', [BedController::class, 'update']);
+    Route::get('/delete/{id}', [BedController::class, 'delete']);
 });
 
 Route::prefix('hmo')->group(function () {
     Route::get('/', [HmoController::class, 'index']);
+    Route::post('/add', [HmoController::class, 'add']);
+    Route::post('/update', [HmoController::class, 'update']);
+    Route::get('/delete/{id}', [HmoController::class, 'delete']);
 });
 
 Route::prefix('other')->group(function () {
     Route::get('/', [OtherController::class, 'index']);
+    Route::post('/add', [OtherController::class, 'add']);
+    Route::post('/update', [OtherController::class, 'update']);
+    Route::get('/delete/{id}', [OtherController::class, 'delete']);
 });
 
 Route::prefix('department')->group(function () {
     Route::get('/', [DepartmentController::class, 'index']);
+    Route::post('/add', [DepartmentController::class, 'add']);
+    Route::post('/update', [DepartmentController::class, 'update']);
+    Route::get('/delete/{id}', [DepartmentController::class, 'delete']);
 });
 Route::prefix('statu')->group(function () {
     Route::get('/', [StatuController::class, 'index']);
+    Route::post('/add', [StatuController::class, 'add']);
+    Route::post('/update', [StatuController::class, 'update']);
+    Route::get('/delete/{id}', [StatuController::class, 'delete']);
 });
 Route::prefix('insurance')->group(function () {
     Route::get('/', [InsuranceController::class, 'index']);
+    Route::post('/add', [InsuranceController::class, 'add']);
+    Route::post('/update', [InsuranceController::class, 'update']);
+    Route::get('/delete/{id}', [InsuranceController::class, 'delete']);
 });

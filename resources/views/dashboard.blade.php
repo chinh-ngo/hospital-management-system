@@ -180,7 +180,7 @@
                             <section class="panel">
                                 <header class="panel-heading bg-default">
                                     <div class="panel-heading-profile-picture">
-                                        <img src="{{$patient->upload_file}}">
+                                        <img src="uploadFiles/patients/{{$patient->upload_file}}">
                                     </div>
                                 </header>
                                 <div class="panel-body">

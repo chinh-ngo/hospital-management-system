@@ -26,7 +26,7 @@
             <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
                 <section class="panel">
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{url('/bed/add')}}">
                         @csrf
                         <header class="panel-heading">
                             <h2 class="panel-title">Add Bed</h2>
@@ -36,14 +36,58 @@
                             <div class="form-group mt-lg">
                                 <label class="col-sm-3 control-label">Bed Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="name" class="form-control" required/>
+                                    <input type="text" name="bed_num" class="form-control" required/>
                                 </div>
                             </div>
 
                             <div class="form-group mt-lg">
                                 <label class="col-sm-3 control-label">Ward</label>
                                 <div class="col-sm-9">
-                                    <select name="user_id" id="user_id" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
+                                    <select name="ward_id" id="ward_id" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
+                                        <optgroup label="ward">
+                                            @foreach($wards as $ward)
+                                                <option value="{{$ward->id}}">{{$ward->name}}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                                </div>
+                            </div>
+                        </footer>
+                    </form>
+                </section>
+            </div>
+
+            <div id="modalForm1" class="modal-block modal-block-primary mfp-hide">
+                <section class="panel">
+
+                    <form method="POST" action="{{url('/bed/update')}}">
+                        @csrf
+                        <header class="panel-heading">
+                            <h2 class="panel-title">Update Bed</h2>
+                        </header>
+
+                        <div class="panel-body">
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Bed Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="update_bed_num" name="update_bed_num" class="form-control" required/>
+                                    <input type="hidden" id="id" name="id" class="form-control" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Ward</label>
+                                <div class="col-sm-9">
+                                    <select name="update_ward_id" id="update_ward_id" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
                                         <optgroup label="ward">
                                             @foreach($wards as $ward)
                                                 <option value="{{$ward->id}}">{{$ward->name}}</option>
@@ -83,7 +127,7 @@
                     <tr>
                         <td>{{$bed->no}}</td>
                         <td>{{$bed->ward->name}}</td>
-                        <td><a><i onclick="update('{{$bed}}')" class="fa fa-pencil"></i></a>   <a class="delete-row" href="/bed/delete/{{$bed->id}}"><i  class="fa fa-trash-o"></i></a> </td>
+                        <td><a><i href="#modalForm1" onclick="update('{{$bed}}')" class="modal-with-form fa fa-pencil"></i></a>   <a class="delete-row" href="/bed/delete/{{$bed->id}}"><i  class="fa fa-trash-o"></i></a> </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -121,7 +165,9 @@
 
         function update(data){
             data = JSON.parse(data);
-            window.location.assign('/report/update/' + data.id);
+            $('#update_ward_id').val(data.ward_id);
+            $('#update_bed_num').val(data.no);
+            $('#id').val(data.id);
         }
 
         function exportToExcel(){

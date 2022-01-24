@@ -80,7 +80,11 @@ class CustomAuthController extends Controller
             $data['beds'] = Bed::all()->count();
             $data['patients'] = Patient::all()->count();
             $data['appointments'] = Appointment::all()->count();
-            return view('dashboard', $data);
+
+            if (Auth::user()->role == 'superAdmin')
+                return view('dashboard', $data);
+            else
+                return redirect('appointment');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

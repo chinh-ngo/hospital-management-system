@@ -13,11 +13,11 @@ class Insurance extends Model
         'name'
     ];
 
-    public function delete()
-    {
-        $this->patients()->delete();
-        return parent::delete();
-    }
+//    public function delete()
+//    {
+//        $this->patients()->delete();
+//        return parent::delete();
+//    }
 
     public function patients()
     {

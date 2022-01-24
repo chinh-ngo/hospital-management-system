@@ -57,9 +57,12 @@
                                         <select name="role" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
                                             <optgroup label="Role">
                                                 <option value="superAdmin">SuperAdmin</option>
-                                                <option value="engr">supervisor</option>
-                                                <option value="coodinator">Zonal coodinator</option>
-                                                <option value="head">divisional head</option>
+                                                <option value="doctor">Doctor</option>
+                                                <option value="nurse">Nurse</option>
+                                                <option value="lab">Lab Scientist</option>
+                                                <option value="xray">Xray</option>
+                                                <option value="receptionist">Receptionist</option>
+                                                <option value="pharmacist">Pharmacist</option>
                                             </optgroup>
                                         </select>
                                     </div>

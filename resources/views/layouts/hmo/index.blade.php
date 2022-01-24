@@ -26,7 +26,7 @@
             <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
                 <section class="panel">
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{url('/hmo/add')}}">
                         @csrf
                         <header class="panel-heading">
                             <h2 class="panel-title">Add HMO</h2>
@@ -43,6 +43,43 @@
                                 <label class="col-sm-3 control-label">Phone Number</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="phone_num" class="form-control" required/>
+                                </div>
+                            </div>
+
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                                </div>
+                            </div>
+                        </footer>
+                    </form>
+                </section>
+            </div>
+
+            <div id="modalForm1" class="modal-block modal-block-primary mfp-hide">
+                <section class="panel">
+
+                    <form method="POST" action="{{url('/hmo/update')}}">
+                        @csrf
+                        <header class="panel-heading">
+                            <h2 class="panel-title">Update HMO</h2>
+                        </header>
+
+                        <div class="panel-body">
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="update_name" name="update_name" class="form-control" required/>
+                                    <input type="hidden" id="id" name="id" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Phone Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="update_phone_num" name="update_phone_num" class="form-control" required/>
                                 </div>
                             </div>
 
@@ -76,7 +113,7 @@
                     <tr>
                         <td>{{$hmo->name}}</td>
                         <td>{{$hmo->phone_num}}</td>
-                        <td><a><i onclick="update('{{$hmo}}')" class="fa fa-pencil"></i></a>   <a class="delete-row" href="/hmo/delete/{{$hmo->id}}"><i  class="fa fa-trash-o"></i></a> </td>
+                        <td><a><i href="#modalForm1" onclick="update('{{$hmo}}')" class="modal-with-form fa fa-pencil"></i></a>   <a class="delete-row" href="/hmo/delete/{{$hmo->id}}"><i  class="fa fa-trash-o"></i></a> </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -114,7 +151,9 @@
 
         function update(data){
             data = JSON.parse(data);
-            window.location.assign('/report/update/' + data.id);
+            $('#update_phone_num').val(data.phone_num);
+            $('#update_name').val(data.name);
+            $('#id').val(data.id);
         }
 
         function exportToExcel(){
