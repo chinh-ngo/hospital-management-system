@@ -101,11 +101,20 @@ Route::prefix('patient')->group(function () {
 
 Route::prefix('drug')->group(function () {
     Route::get('/', [DrugController::class, 'index']);
+    Route::post('/add', [DrugController::class, 'add']);
+    Route::get('/delete/{id}', [DrugController::class, 'delete']);
+    Route::post('/update', [DrugController::class, 'update']);
     Route::get('/category', [DrugController::class, 'category']);
+    Route::post('/category/add', [DrugController::class, 'add_category']);
+    Route::post('/category/update', [DrugController::class, 'update_category']);
+    Route::get('/category/delete/{id}', [DrugController::class, 'delete_category']);
 });
 
 Route::prefix('test')->group(function () {
     Route::get('/', [TestController::class, 'index']);
+    Route::post('/add', [TestController::class, 'add']);
+    Route::post('/update', [TestController::class, 'update']);
+    Route::get('/delete/{id}', [TestController::class, 'delete']);
 });
 
 Route::prefix('parameter')->group(function () {

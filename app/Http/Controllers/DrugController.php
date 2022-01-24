@@ -20,9 +20,56 @@ class DrugController extends Controller
         return view('layouts.drug.index', $data);
     }
 
+    public function add(Request $request)
+    {
+        $drug = new Drug;
+        $drug->name = $request->name;
+        $drug->category_id = $request->category_id;
+        $drug->amount = $request->amount;
+        $drug->save();
+        return redirect()->back();
+    }
+
+    public function delete(Request $request)
+    {
+        Drug::findOrFail($request->id)->delete();
+        return redirect()->back();
+    }
+
+    public function update(Request $request)
+    {
+        $drug = Drug::findOrFail($request->id);
+        $drug->category_id = $request->update_category_id;
+        $drug->name = $request->update_name;
+        $drug->amount = $request->update_amount;
+        $drug->save();
+
+        return redirect()->back();
+    }
+
     public function category()
     {
         $data['categories'] = Category::all();
         return view('layouts.drug.category', $data);
+    }
+
+    public function add_category(Request $request)
+    {
+        $category = new Category;
+        $category->category = $request->category;
+        $category->save();
+        return redirect()->back();
+    }
+    public function delete_category(Request $request)
+    {
+        Category::findOrFail($request->id)->delete();
+        return redirect()->back();
+    }
+    public function update_category(Request $request)
+    {
+        $category = Category::findOrFail($request->id);
+        $category->category = $request->update_category;
+        $category->save();
+        return redirect()->back();
     }
 }

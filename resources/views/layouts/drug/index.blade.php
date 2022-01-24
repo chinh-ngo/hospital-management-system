@@ -26,7 +26,7 @@
             <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
                 <section class="panel">
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{url('drug/add')}}">
                         @csrf
                         <header class="panel-heading">
                             <h2 class="panel-title">Add Drug</h2>
@@ -46,7 +46,7 @@
                                     <select name="category_id" id="category_id" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
                                         <optgroup label="categories">
                                             @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->$category}}</option>
+                                                <option value="{{$category->id}}">{{$category->category}}</option>
                                             @endforeach
                                         </optgroup>
                                     </select>
@@ -55,7 +55,56 @@
                             <div class="form-group mt-lg">
                                 <label class="col-sm-3 control-label">Amount</label>
                                 <div class="col-sm-9">
-                                    <input type="number" name="amount" class="form-control" placeholder="Type Reason" required/>
+                                    <input type="number" name="amount" class="form-control" placeholder="Type Amount" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                                </div>
+                            </div>
+                        </footer>
+                    </form>
+                </section>
+            </div>
+
+            <div id="modalForm1" class="modal-block modal-block-primary mfp-hide">
+                <section class="panel">
+
+                    <form method="POST" action="{{url('drug/update')}}">
+                        @csrf
+                        <header class="panel-heading">
+                            <h2 class="panel-title">Add Drug</h2>
+                        </header>
+
+                        <div class="panel-body">
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="update_name" name="update_name" class="form-control" placeholder="Type Reason" required/>
+                                    <input type="hidden" id="id" name="id" class="form-control" placeholder="Type Reason" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Category</label>
+                                <div class="col-sm-9">
+                                    <select name="update_category_id" id="update_category_id" data-plugin-selectTwo class="form-control populate js-example-responsive" style="width: 100%;">
+                                        <optgroup label="categories">
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->category}}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mt-lg">
+                                <label class="col-sm-3 control-label">Amount</label>
+                                <div class="col-sm-9">
+                                    <input type="number" id="update_amount" name="update_amount" class="form-control" placeholder="Type Amount" required/>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +139,7 @@
                         <td>{{$drug->name}}</td>
                         <td>{{$drug->category->category}}</td>
                         <td>{{$drug->amount}}</td>
-                        <td><a><i onclick="update('{{$drug}}')" class="fa fa-pencil"></i></a>   <a class="delete-row" href="/drug/delete/{{$drug->id}}"><i  class="fa fa-trash-o"></i></a> </td>
+                        <td><a><i href="#modalForm1" onclick="update('{{$drug}}')" class="modal-with-form fa fa-pencil"></i></a>   <a class="delete-row" href="/drug/delete/{{$drug->id}}"><i  class="fa fa-trash-o"></i></a> </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -128,7 +177,10 @@
 
         function update(data){
             data = JSON.parse(data);
-            window.location.assign('/report/update/' + data.id);
+            $('#update_name').val(data.name);
+            $('#update_category_id').val(data.category_id);
+            $('#update_amount').val(data.amount);
+            $('#id').val(data.id);
         }
 
         function exportToExcel(){
